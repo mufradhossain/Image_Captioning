@@ -97,12 +97,12 @@ def after(our_image):
 def main():
     """Image Captioning App"""
 
-    st.title("Image Caption")
+    st.title("Blackbeard")
 
     html_temp = """
     <body style="background-color:red;">
     <div style="background-color:teal ;padding:10px">
-    <h2 style="color:white;text-align:center;">Image Captioning WebApp</h2>
+    <h2 style="color:white;text-align:center;">Feature Based Image Captioning</h2>
     </div>
     </body>
     """
@@ -114,7 +114,7 @@ def main():
 
         st.image(our_image)
 
-    if st.button("Recognise"):
+    if st.button("Generate Caption"):
        res= after(our_image)
        res2=str(res)
        st.text("Caption: " + res2)
