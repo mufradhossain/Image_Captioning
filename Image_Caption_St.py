@@ -6,7 +6,6 @@ from keras.layers import Dense, LSTM, TimeDistributed, Embedding,  Activation, R
 from keras.models import Sequential, Model
 import cv2
 from keras.preprocessing.sequence import pad_sequences
-from tqdm import tqdm
 
 
 vocab = np.load('vocab.npy', allow_pickle=True)
@@ -67,7 +66,7 @@ def after(our_image):
 
 
     count = 0
-    while tqdm(count < 20):
+    while (count < 20):
 
         count += 1
 
