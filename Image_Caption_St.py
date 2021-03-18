@@ -57,12 +57,9 @@ def after(our_image):
 
     incept = resnet.predict(image).reshape(1, 2048)
 
-
-
     text_in = ['startofseq']
 
     final = ''
-
 
 
     count = 0
@@ -93,16 +90,40 @@ def after(our_image):
 
     return cap
 
+def _max_width_():
+    max_width_str = f"max-width: 2000px;"
+    st.markdown(
+        f"""
+    <style>
+    .reportview-container .main .block-container{{
+        {max_width_str}
+    }}
+    </style>    
+    """,
+        unsafe_allow_html=True,
+    )
+
 
 def main():
     """Image Captioning App"""
 
     st.title("Blackbeard")
 
+    _max_width_()
+
+    hide_streamlit_style = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        </style>
+        """
+    st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+
     html_temp = """
     <body style="background-color:red;">
     <div style="background-color:teal ;padding:10px">
     <h2 style="color:white;text-align:center;">Feature Based Image Captioning</h2>
+    <p style="color:white;text-align:center;">Model Trained on 4000 Images from the Flickr8k dataset</p>
     </div>
     </body>
     """
@@ -111,14 +132,14 @@ def main():
     image_file = st.file_uploader("Upload Image", type=['jpg', 'png', 'jpeg'])
     if image_file is not None:
         our_image = Image.open(image_file)
-
+        #st.header("Image")
         st.image(our_image)
 
-    if st.button("Generate Caption"):
-       res= after(our_image)
-       res2=str(res)
-       st.text("Caption: " + res2)
-
+        #if st.button("Generate Caption"):
+        res= after(our_image)
+        res2=str(res)
+        st.text("Caption: " + res2)
+            
 
 if __name__ == '__main__':
     main()
