@@ -3,3 +3,4 @@ streamlit==0.78.0
 Keras==2.4.3
 opencv-contrib-python-headless
 tensorflow-cpu==2.2.0
+numpy==1.19.5
